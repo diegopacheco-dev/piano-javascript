@@ -53,7 +53,7 @@ background-attachment: fixed;
     border-radius: .3rem .3rem .4rem .4rem;
 }
 
-.white span {
+.white {
     color: black;
     font-size: 1.4em;
 }
@@ -68,7 +68,7 @@ background-attachment: fixed;
     border-radius: .2rem .2rem   .4rem .4rem;
 }
 
-.black span {
+.black {
     color: white;
     font-size: 1em;
 }

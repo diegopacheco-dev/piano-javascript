@@ -1,10 +1,17 @@
 // FUNCION PARA REPRODUCIR TECLAS
 const playSound = (e) => {
-    
     // almacenamos el elemento audio con el atributo "data-key = <tecla presionada>"
-    const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+    let audio;
+    let key;
+
+    if(e.keyCode){
+        audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+        key = document.querySelector(`.key[data-key="${e.keyCode}"]`); 
+    }else {
+        audio = document.querySelector(`audio[data-key="${+e.target.dataset.key}"]`);
+        key = document.querySelector(`.key[data-key="${+e.target.dataset.key}"]`); 
+    }
     // Si hay un tecla del piano con la clase "key" y el atributo "data-key=<tecla presionada>, lo almacenamos"
-    const key = document.querySelector(`.key[data-key="${e.keyCode}"]`); 
     const divNotaMusical = document.querySelector('#nota-musical');
     
     // Si no hay un elemento audio con la el data-key de la tecla presionada paramos la funcion.
@@ -34,6 +41,7 @@ const removeActivateClass = (e) => {
 const teclas = document.querySelectorAll('.key');
 teclas.forEach((tecla) => {
     tecla.addEventListener('transitionend', removeActivateClass)
+    tecla.addEventListener('click', playSound)
 })
 
 
